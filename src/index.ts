@@ -1,8 +1,6 @@
 import "reflect-metadata";
 import express from "express";
 import session from "express-session";
-import { redis } from './redis'
-import connectRedis from 'connect-redis'
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import { AuthResolver } from "./resolvers/AuthResolver";
@@ -14,12 +12,12 @@ import 'dotenv'
 (async () => {
   const app = express();
 
-  const RedisStore = connectRedis(session);
+  // const RedisStore = connectRedis(session);
   app.use(
     session({
-      store: new RedisStore({
-        client: redis as any
-      }),
+      // store: new RedisStore({
+      //   client: redis as any
+      // }),
       name: "qid",
       secret: process.env.SESSION_SECRET || "aslkdfjoiq12312",
       resave: false,
