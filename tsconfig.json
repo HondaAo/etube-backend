@@ -6,7 +6,8 @@
       "dom",
       "es6",
       "es2017",
-      "esnext.asynciterable"
+      "esnext.asynciterable",
+      "esnext"
     ],
     "sourceMap": true,
     "outDir": "./dist",
@@ -28,7 +29,8 @@
     "baseUrl": "."
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ],
   "include": [
     "./src/**/*.tsx",
