@@ -42,7 +42,9 @@ import 'dotenv'
       resolvers: [BookResolver, VideoResolver],
       validate: false
     }),
-    context: ({ req, res }) => ({ req, res })
+    context: ({ req, res }) => ({ req, res }),
+    introspection: true,
+    playground: true,
   });
 
   apolloServer.applyMiddleware({ app, cors: false });
