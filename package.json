@@ -30,7 +30,7 @@
     "typescript": "^4.2.3"
   },
   "scripts": {
-    "start": "nodemon --exec ts-node --files src/index.ts",
+    "start": "node --exec ts-node --files src/index.ts",
     "build": "tsc"
   }
 }
