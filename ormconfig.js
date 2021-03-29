@@ -31,4 +31,4 @@ module.exports = [
        subscribersDir: "dist/subscriber"
      }
    }
- ];
+ ]
