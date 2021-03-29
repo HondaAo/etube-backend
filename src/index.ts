@@ -3,13 +3,17 @@ import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import { BookResolver } from "./resolvers/BookResolver";
-import { createConnection, getConnectionOptions } from "typeorm";
+//import { createConnection, getConnectionOptions } from "typeorm";
 import { VideoResolver } from "./resolvers/VideoResolver";
+import { Pool } from 'pg';
 import 'dotenv'
 
 (async () => {
   const app = express();
-
+  const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
+  });
   // const RedisStore = connectRedis(session);
   // app.use(
   //   session({
@@ -27,11 +31,11 @@ import 'dotenv'
   //     }
   //   })
   // );
-
-  const dbOptions = await getConnectionOptions(
-    process.env.NODE_ENV || "development"
-  );
-  await createConnection({ ...dbOptions, name: "default" });
+   await pool.connect()
+  // const dbOptions = await getConnectionOptions(
+  //   process.env.NODE_ENV || "development"
+  // );
+  // await createConnection({ ...dbOptions, name: "default" });
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
