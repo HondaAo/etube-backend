@@ -2,7 +2,6 @@ import "reflect-metadata";
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
-import { AuthResolver } from "./resolvers/AuthResolver";
 import { BookResolver } from "./resolvers/BookResolver";
 import { createConnection, getConnectionOptions } from "typeorm";
 import { VideoResolver } from "./resolvers/VideoResolver";
@@ -36,7 +35,7 @@ import 'dotenv'
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [AuthResolver, BookResolver, VideoResolver],
+      resolvers: [BookResolver, VideoResolver],
       validate: false
     }),
     context: ({ req, res }) => ({ req, res })

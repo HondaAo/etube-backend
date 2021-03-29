@@ -1,7 +1,5 @@
-import { User } from "../entity/User";
-import { MyContext } from "../graphql-types/MyContext";
 import { VideoInput } from "../graphql-types/VideoInput";
-import { Arg, Mutation, Resolver, UseMiddleware, Query, Ctx } from "type-graphql";
+import { Arg, Mutation, Resolver, UseMiddleware, Query } from "type-graphql";
 import { Video } from '../entity/Video'
 import { isAuth } from "../middleware/isAuth";
 @Resolver()
@@ -94,21 +92,18 @@ export class VideoResolver {
     }
     @Query(() => Video)
     async watchVideo(
-        @Arg('id') id: number,
-        @Ctx() ctx: MyContext
+        @Arg('id') id: number
     ):Promise<Video | null >{
         const video = await Video.findOne({ where: { id }});
         if(!video){
             return null
         }
-        const user = await User.findOne({ where: { id: ctx.req.session.userId }})
         // if(!user?.video){
         //     user!.video = [ id ]
         // }else {
         //     user?.video.push(id)   
         // }
         // await User.update({ id: ctx.req.session.userId }, { video: user?.video })
-        console.log(user)
         await Video.update({ id }, { view: video.view + 1})
         return video
     }
