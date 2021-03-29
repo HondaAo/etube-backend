@@ -1,11 +1,9 @@
 import { VideoInput } from "../graphql-types/VideoInput";
-import { Arg, Mutation, Resolver, UseMiddleware, Query } from "type-graphql";
+import { Arg, Mutation, Resolver, Query } from "type-graphql";
 import { Video } from '../entity/Video'
-import { isAuth } from "../middleware/isAuth";
 @Resolver()
 export class VideoResolver {
     @Mutation(() => Video)
-    @UseMiddleware(isAuth)
     async registerVideo(
         @Arg('input')
         { title, category, series,  url, scripts, level, end }: VideoInput
