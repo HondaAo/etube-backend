@@ -30,7 +30,7 @@
     "typescript": "^4.2.3"
   },
   "scripts": {
-    "start": "ts-node --files src/index.ts",
+    "start": "node --files dist/index.ts",
     "build": "tsc"
   }
 }
