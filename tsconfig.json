@@ -35,5 +35,5 @@
   "include": [
     "./src/**/*.tsx",
     "./src/**/*.ts"
-  ]
+, "src/database.js"  ]
 }

@@ -5,7 +5,7 @@ import { buildSchema } from "type-graphql";
 import { BookResolver } from "./resolvers/BookResolver";
 import { createConnection } from "typeorm";
 import { VideoResolver } from "./resolvers/VideoResolver";
-// import { Pool } from 'pg';
+import cors from 'cors'
 import 'dotenv'
 
 (async () => {
@@ -45,7 +45,7 @@ import 'dotenv'
        ssl: true,
      },
   });
-
+  app.use(cors())
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
       resolvers: [BookResolver, VideoResolver],

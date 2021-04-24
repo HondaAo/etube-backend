@@ -29,6 +29,6 @@ module.exports = [
        entitiesDir: "dist/entity",
        migrationsDir: "dist/migration",
        subscribersDir: "dist/subscriber"
-     }
+     },
    }
  ]
