@@ -1,6 +1,7 @@
 import { VideoInput } from "../graphql-types/VideoInput";
 import { Arg, Mutation, Resolver, Query } from "type-graphql";
 import { Video } from '../entity/Video'
+
 @Resolver()
 export class VideoResolver {
     @Mutation(() => Video)
@@ -19,7 +20,6 @@ export class VideoResolver {
             view: 0,
             end
         }).save()
-        console.log(newVideo)
         return newVideo
     }
     @Mutation(() => String)
@@ -42,8 +42,7 @@ export class VideoResolver {
         { title, category, series,  url, scripts, level }: VideoInput
     ): Promise<String>{
         const jsonb = JSON.stringify(scripts)
-        const video = await Video.update({ id }, { title, category, series,  url, script: jsonb, level})
-        console.log(video)
+        await Video.update({ id }, { title, category, series,  url, script: jsonb, level})
         return "Updated!!"
     }
     @Query(() => [Video])
