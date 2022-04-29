@@ -36,6 +36,5 @@
     "./src/**/*.tsx",
     "./src/**/*.ts",
     "./src/**/**.test.ts",
-    "src/database.js"
   ]
 }
