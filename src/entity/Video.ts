@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, CreateDateColumn } from "typeorm";
-import { Field, ObjectType } from "type-graphql";
+import { Field, Int, ObjectType } from "type-graphql";
 
 export interface ScriptInterface {
   id: number,
@@ -10,43 +10,43 @@ export interface ScriptInterface {
 @ObjectType()
 @Entity()
 export class Video extends BaseEntity {
-  @Field()
+  @Field(() => Int)
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Field()
+  @Field(() => String)
   @Column("text")
   category: string;
 
-  @Field()
+  @Field(() => String)
   @Column("text", { nullable: true })
   series?: string;
 
-  @Field()
+  @Field(() => String)
   @Column("text")
   title: string;
 
-  @Field()
+  @Field(() => String)
   @Column("text")
   url: string;
 
-  @Field()
+  @Field(() => String)
   @Column("text")
   script: string;
 
-  @Field()
+  @Field(() => Int)
   @Column("int")
   view: number;
 
-  @Field()
+  @Field(() => Int)
   @Column("int", { nullable: true })
   end: number;
 
-  @Field()
+  @Field(() => String)
   @Column("text", { nullable: true })
   level: string;
 
-  @Field()
+  @Field(() => String)
   @CreateDateColumn({ type: 'timestamp with time zone' })
   created?: Date;
 

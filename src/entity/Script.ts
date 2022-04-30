@@ -1,17 +1,17 @@
 import { Column, BaseEntity } from "typeorm";
-import { Field, ObjectType } from "type-graphql";
+import { Field, Int, ObjectType } from "type-graphql";
 
 @ObjectType()
 export class Script extends BaseEntity {
-  @Field()
+  @Field(() => Int)
   @Column("int")
   id: number;
   
-  @Field()
+  @Field(() => String)
   @Column("text")
   text: string;
 
-  @Field()
+  @Field(() => String)
   @Column("int")
   timestamp: number;
 }

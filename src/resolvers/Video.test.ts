@@ -52,5 +52,6 @@ describe("Register", () => {
 
         const dbVideo = await Video.findOne({ where: { title: video.title}})
         expect(dbVideo).toBeDefined();
+        expect(dbVideo?.category).toBe(video.category)
     })
 })
