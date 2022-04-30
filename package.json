@@ -39,7 +39,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "local-start": "nodemon --files src/index.ts",
-    "build": "tsc --watch",
+    "build": "tsc",
     "db:setup": "ts-node ./src/test-utils/setup.ts",
     "test": "npm run db:setup && jest"
   }
