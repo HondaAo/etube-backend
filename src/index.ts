@@ -4,9 +4,9 @@ import { ApolloServer } from "apollo-server-express";
 import { createConnection } from "typeorm";
 import 'dotenv'
 import { User } from "./entity/User";
-import { Script } from "vm";
 import { Video } from "./entity/Video";
 import { createSchema } from "./createSchema";
+import { Script } from "./entity/Script";
 
 // (async () => {
 //   const app = express();
