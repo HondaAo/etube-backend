@@ -65,7 +65,7 @@ jobs:
         id: deploy
         run: |
           aws deploy create-deployment \
-            --application-name e-tube \
+            --application-name etube \
             --deployment-group-name etubedeploymentgroup \
             --deployment-config-name CodeDeployDefault.OneAtATime \
             --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
