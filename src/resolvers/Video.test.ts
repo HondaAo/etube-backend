@@ -21,8 +21,18 @@ mutation RegisterVideo($input: VideoInput!) {
     }
 }
 `
+const watchVideoQuery = `
+query WatchVideo($id: Float!) {
+    watchVideo(id: $id) {
+        id
+        title
+        view
+        category
+    }
+}
+`
 
-describe("Register", () => {
+describe("Register and Watch", () => {
     it("create video", async() => {
         const video = {
             title: "She's got a gun!",
@@ -53,5 +63,16 @@ describe("Register", () => {
         const dbVideo = await Video.findOne({ where: { title: video.title}})
         expect(dbVideo).toBeDefined();
         expect(dbVideo?.category).toBe(video.category)
+
+        await gCall({
+            source: watchVideoQuery,
+            variableValues: {
+                id: 1
+            }
+        })
+
+        const viewedVideo = await Video.findOne({ where: { title: video.title}})
+        expect(viewedVideo!.view).toBe(dbVideo!.view + 1)
+
     })
 })
