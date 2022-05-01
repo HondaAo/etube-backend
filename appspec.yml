@@ -3,11 +3,16 @@ os: linux
 files:
  - source: .
    destination: /home/ec2-user/etube-backend
+file_exists_behavior: OVERWRITE
 hooks:
   ApplicationStop:
    - location: scripts/stop.sh
      timeout: 300
      runas: root
+  # BeforeInstall:
+  #  - location: scripts/berofe_install.sh
+  #    timeout: 300
+  #    runas: root
   AfterInstall:
    - location: scripts/install_app_dependencies
      timeout: 300
